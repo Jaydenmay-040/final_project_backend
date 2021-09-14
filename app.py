@@ -477,6 +477,7 @@ def post():
     if request.method == 'GET':
         with sqlite3.connect('cloudiroid.db') as conn:
             cursor = conn.cursor()
+            conn.row_factory = db.dict_factory
             cursor.execute('SELECT * FROM post')
             response['posts'] = cursor.fetchall()
 
